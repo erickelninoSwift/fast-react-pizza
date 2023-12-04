@@ -3,16 +3,14 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
-import Home from "./features/ui/Home";
-import Menu, { loader as MenuLoader } from "./features/menu/Menu";
-import Order, { orderLoader } from "./features/order/Order";
-import Cart from "./features/cart/Cart";
+import Home from "./ui/Home";
+import Menu, { loader as MenuLoader } from "./menu/Menu";
+import Order, { orderLoader } from "./order/Order";
+import Cart from "./cart/Cart";
 
-import AppLayout from "./features/ui/AppLayout";
-import NotFound from "./features/ui/Error";
-import CreateOrder, {
-  action as createOrderAction,
-} from "./features/order/CreateOrder";
+import AppLayout from "./ui/AppLayout";
+import NotFound from "./ui/Error";
+import CreateOrder, { action as createOrderAction } from "./order/CreateOrder";
 function App() {
   const router = createBrowserRouter([
     {

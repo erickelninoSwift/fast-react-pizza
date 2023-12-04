@@ -8,7 +8,6 @@ body {
   background-color: #f7f7f7;
   color: #444;
 }
-
 .layout {
   display: grid;
   grid-template-rows: auto 1fr auto;
