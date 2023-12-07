@@ -1,31 +1,31 @@
-import { useState } from "react";
-import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
-import { createOrder } from "../services/apiRestaurant";
+import { useState } from 'react';
+import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
+import { createOrder } from '../services/apiRestaurant';
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
-    str
+    str,
   );
 
 const fakeCart = [
   {
     pizzaId: 12,
-    name: "Mediterranean",
+    name: 'Mediterranean',
     quantity: 2,
     unitPrice: 16,
     totalPrice: 32,
   },
   {
     pizzaId: 6,
-    name: "Vegetale",
+    name: 'Vegetale',
     quantity: 1,
     unitPrice: 13,
     totalPrice: 13,
   },
   {
     pizzaId: 11,
-    name: "Spinach and Mushroom",
+    name: 'Spinach and Mushroom',
     quantity: 1,
     unitPrice: 15,
     totalPrice: 15,
@@ -35,7 +35,7 @@ const fakeCart = [
 function CreateOrder() {
   // const [withPriority, setWithPriority] = useState(false);
   const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
+  const isSubmitting = navigation.state === 'submitting';
   const formError = useActionData();
   const cart = fakeCart;
 
@@ -55,9 +55,9 @@ function CreateOrder() {
           </div>
           {formError?.phone && (
             <p>
-              {" "}
+              {' '}
               Please give us your correct phone number . we might need it to
-              contact you{" "}
+              contact you{' '}
             </p>
           )}
         </div>
@@ -82,8 +82,11 @@ function CreateOrder() {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <button disabled={isSubmitting}>
-            {isSubmitting ? "Placing order" : "Order now"}
+          <button
+            disabled={isSubmitting}
+            className="mt-[10px] inline-block rounded-lg bg-yellow-400 p-[7px] text-sm font-semibold uppercase text-stone-600 hover:bg-yellow-700 hover:text-stone-100 focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? 'Placing order' : 'Order now'}
           </button>
         </div>
       </Form>
@@ -98,13 +101,13 @@ export const action = async ({ request }) => {
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
-    priority: data.priority === "on",
+    priority: data.priority === 'on',
   };
 
   const error = {};
   if (!isValidPhone(order.phone))
     error.phone =
-      "Please give us your correct phone number . we might need it to contact you ";
+      'Please give us your correct phone number . we might need it to contact you ';
 
   if (Object.keys(error).length > 0) return error;
   const newOrder = await createOrder(order);
