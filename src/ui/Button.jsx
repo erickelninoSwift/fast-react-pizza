@@ -11,6 +11,9 @@ const Button = ({ children, isDisabled, to, type }) => {
   const styles = {
     primary: base + ' px-4 py-3 md:px-6 md:py-4',
     small: base + ' py-2 px-5 text-xs md:py-2.5 md:px-7',
+    secondary:
+      base +
+      'bg-transparent border-2 border-stone-300  px-4 py-2.5 md:px-6 md:py-3.5 hover:bg-stone-600 hover:text-stone-200 focus:bg-stone-400 focus:ring focus:ring-stone-600 focus:ring-offset-2',
   };
   if (to)
     return (
