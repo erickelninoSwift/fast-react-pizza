@@ -43,14 +43,14 @@ function CreateOrder() {
     <div>
       <h2 className="mb-5 mt-5">Ready to order? Let's go!</h2>
       <Form method="POST">
-        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center ">
-          <label>First Name</label>
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
+          <label className="sm:basis-40">First Name</label>
           <input className="input" type="text" name="customer" required />
         </div>
 
-        <div>
-          <label>Phone number</label>
-          <div>
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center ">
+          <label className="sm:basis-40">Phone number</label>
+          <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
             <input className="input" type="tel" name="phone" required />
           </div>
           {formError?.phone && (
@@ -62,7 +62,7 @@ function CreateOrder() {
           )}
         </div>
 
-        <div>
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label>Address</label>
           <div>
             <input className="input" type="text" name="address" required />
