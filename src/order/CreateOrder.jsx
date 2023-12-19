@@ -8,6 +8,7 @@ import EmptyCart from '../cart/EmptyCart';
 import store from '../store/store';
 import { formatCurrency } from '../utils/helpers';
 import { useDispatch } from 'react-redux';
+import { fetchAddress } from '../utils/userSlice';
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -33,7 +34,9 @@ function CreateOrder() {
   return (
     <div>
       <h2 className="mb-5 mt-5">Ready to order? Let's go!</h2>
-      <button onClick={() => {}}></button>
+      <button onClick={() => dispatch(fetchAddress())}>
+        Get User Position
+      </button>
       <Form method="POST">
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">First Name</label>

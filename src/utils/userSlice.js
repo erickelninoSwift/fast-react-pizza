@@ -32,7 +32,7 @@ const initialState = {
   status: 'idle',
   position: {},
   address: '',
-  Error: '',
+  error: '',
 };
 
 const userSlice = createSlice({
@@ -46,16 +46,16 @@ const userSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(fetchAddress.pending, (state, action) => {
-        return (state.status = 'loading');
+        state.status = 'loading';
       })
       .addCase(fetchAddress.fulfilled, (state, action) => {
-        state.position = action.payload.position;
         state.address = action.payload.address;
+        state.position = action.payload.position;
         state.status = 'idle';
       })
       .addCase(fetchAddress.rejected, (state, action) => {
         state.status = 'error';
-        state.Error = action.error.message;
+        state.error = action.error.message;
       }),
 });
 
