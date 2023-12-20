@@ -123,7 +123,7 @@ function CreateOrder() {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <input type="hidden" name="position" value={''} />
+          <input type="hidden" name="position" value={position.longitude ? `${position.longitude} , ${position.lalitude}`} />
           {isEnabled && (
             <Button isDisabled={isSubmitting} type={'primary'}>
               {isSubmitting
