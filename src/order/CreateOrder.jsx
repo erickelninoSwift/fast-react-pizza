@@ -86,7 +86,7 @@ function CreateOrder() {
             {addressStatus === 'error' && (
               <p className="mt-2 rounded-md bg-red-200 p-2 text-xs text-red-700">
                 {' '}
-                Error was found white wating on your current location
+                Error was found white waiting on your current location
                 {errorAddress}
               </p>
             )}
@@ -123,7 +123,15 @@ function CreateOrder() {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <input type="hidden" name="position" value={position.longitude ? `${position.longitude} , ${position.lalitude}`} />
+          <input
+            type="hidden"
+            name="position"
+            value={
+              position.longitude && position.latitude
+                ? `${position.longitude} ,${position.latitude}`
+                : ''
+            }
+          />
           {isEnabled && (
             <Button isDisabled={isSubmitting} type={'primary'}>
               {isSubmitting
@@ -147,6 +155,7 @@ export const action = async ({ request }) => {
     priority: data.priority === 'true',
   };
 
+  console.log(order);
   const error = {};
   if (!isValidPhone(order.phone))
     error.phone =
