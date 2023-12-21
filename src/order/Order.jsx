@@ -5,6 +5,7 @@ import { getOrder } from '../services/apiRestaurant';
 import { calcMinutesLeft, formatCurrency, formatDate } from '../utils/helpers';
 import OrderItem from './OrderItem';
 import { useEffect } from 'react';
+import UpdateOrders from './UpdateOrders';
 // const order = {
 //   id: "ABCDEF",
 //   customer: "Jonas",
@@ -116,6 +117,7 @@ function Order() {
           To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </div>
+      {!priority && <UpdateOrders order={order} />}
     </div>
   );
 }
